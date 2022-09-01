@@ -9,6 +9,7 @@ const FooterCont = styled.footer`
   left: 0;
   right: 0;
   justify-content: center;
+  margin-top:2rem;
 
   @media screen and (max-width: 56.25rem) {
     flex-direction: column;

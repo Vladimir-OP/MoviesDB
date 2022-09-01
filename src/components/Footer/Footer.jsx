@@ -8,7 +8,7 @@ const Footer = () => {
         <img src={logo} />
         <div>Join the community</div>
       </FooterLeft>
-      <FooterMenu>
+      <FooterMenu> 
           <h3>The Basics</h3>
           <ul>
             <li>About TMDB</li>

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Container = styled.div`
   width: 100%;
@@ -16,6 +16,32 @@ const Container = styled.div`
   padding: 0 2.5rem;
   box-sizing: border-box !important;
   align-items: center;
+`;
+
+const Main = styled.div`
+  display: flex;
+  justify-content: space-around;
+  width: 95%;
+  margin-top: 5rem;
+
+  @media screen and (max-width: 48rem) {
+    flex-direction: column;
+    align-items: center;
+  }
+`;
+
+const ContainerVertical = styled(Container)`
+  align-items: flex-start;
+  flex-direction: column;
+`;
+
+const Content = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  @media screen and (max-width: 34rem) {
+    flex-direction: column !important;
+  }
 `;
 
 const Icon = styled.div(
@@ -38,5 +64,8 @@ const Icon = styled.div(
   }
 `
 );
+const GlobalStyle = styled.div`
 
-export{Container,Icon}
+  margin: 0 auto;
+`;
+export { Container, Icon, GlobalStyle, Main, Content, ContainerVertical };
