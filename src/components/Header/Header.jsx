@@ -12,13 +12,13 @@ import {
 import {
   Container,
   Icon,
-} from "/home/vladimir/Desktop/Movies/movies/src/components/shared/shared.style.js";
-import logoText from "/home/vladimir/Desktop/Movies/movies/src/assets/logo-text.svg";
-import plus from "/home/vladimir/Desktop/Movies/movies/src/assets/plus.svg";
-import search from "/home/vladimir/Desktop/Movies/movies/src/assets/search.svg";
-import burgerMenu from "/home/vladimir/Desktop/Movies/movies/src/assets/burger-menu.svg";
-import logo from "/home/vladimir/Desktop/Movies/movies/src/assets/logo.svg";
-import profileIcon from "/home/vladimir/Desktop/Movies/movies/src/assets/profile-icon.svg";
+} from "../shared/shared.style";
+import logoText from "../../assets/logo-text.svg";
+import plus from "../../assets//plus.svg";
+import search from "../../assets/search.svg";
+import burgerMenu from "../../assets/burger-menu.svg";
+import logo from "../../assets/logo.svg";
+import profileIcon from "../../assets/profile-icon.svg";
 
 /**
  * Construct Header component

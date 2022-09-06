@@ -1,20 +1,20 @@
+import MainPage from "./components/MainPage/MainPage";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import Filter from "./components/FIlters/Filter";
-import { Main } from "./components/shared/shared.style";
-import MoviesList from "./components/Movies-list/MoviesList";
-import { GlobalStyle } from "./components/shared/shared.style";
+import MovieInfo from "./components/MovieInfo/MovieInfo";
+import { MoviesContextProvider } from "./contexts/moviesContext";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <GlobalStyle>
+    <MoviesContextProvider>
       <Header />
-      <Main>
-        <Filter />
-        <MoviesList />
-      </Main>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/movie" element={<MovieInfo />} />
+      </Routes>
       <Footer />
-    </GlobalStyle>
+    </MoviesContextProvider>
   );
 }
 

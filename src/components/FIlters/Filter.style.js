@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 const FilterCont = styled.div`
   width: 15rem;
-  margin-left:18rem;
+  margin-left: 18rem;
   @media screen and (max-width: 47.75rem) {
     margin-right: 0;
-    margin-left:0;
+    margin-left: 0;
   }
 `;
 
@@ -14,14 +14,13 @@ const SubmitBtn = styled.div`
   min-height: 3rem;
   background-color: #4cc4e4;
   border-radius: 1rem;
-  display:flex;
-  justify-content:center;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  color:white;
-  font-size:1.2rem;
-  margin-top:2rem;
-  cursor:pointer;
-  
+  color: white;
+  font-size: 1.2rem;
+  margin-top: 2rem;
+  cursor: pointer;
 `;
 
 const Titile = styled.h2`
@@ -101,16 +100,18 @@ const DropdownFilter = styled.div`
   align-items: center;
   flex-flow: row nowrap;
   box-shadow: none;
-  cursor: pointer;
   border-radius: 0.25rem;
   border-width: 0.063rem;
   border-color: #e4e7eb;
   color: #212529;
   background-color: #e4e7eb;
   z-index: 1;
+  cursor: pointer;
   transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out,
     border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-
+  
+    
+  }
   :hover {
     border-color: #c7cdd5;
     background-color: #c7cdd5;
@@ -153,6 +154,21 @@ const DropdownFilterOption = styled.p`
   font-size: 0.9em;
   font-weight: 400;
 `;
+
+const SelectionBtn = styled.span`
+  width: 100%;
+  height: 2.5rem;
+  font-size: 17px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+`;
+
+const Selections = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+`;
 export {
   FilterCont,
   DropdownFilterOption,
@@ -163,4 +179,6 @@ export {
   FilterItem,
   Titile,
   SubmitBtn,
+  SelectionBtn,
+  Selections,
 };
