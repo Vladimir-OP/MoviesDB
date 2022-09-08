@@ -2,17 +2,28 @@ import styled from "styled-components";
 
 const InfoCont = styled.div`
   margin-top: 4rem;
-  height: auto;
-  width: auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @media screen and (max-width: 48rem) {
+    padding: 0;
+    justify-content: center;
+    justify-content: space-around;
+    height:100%
+  }
 `;
 const MovieInfoItems = styled.div`
   display: flex;
   align-items: center;
   margin-left: 15rem;
+  @media screen and (max-width: 48rem) {
+    padding: 0;
+    justify-content: center;
+    justify-content: space-around;
+    flex-direction:column;
+    margin:0;
+  }
 `;
 const BackgroundImage = styled.div(
   ({ image }) =>
@@ -21,7 +32,18 @@ background-image:url("${image}");
 background-size: cover;
 width:100%;
 height:32rem;
-dsiplay:flex:
+dsiplay:flex;
+
+
+@media screen and (max-width: 48rem) {
+
+  width:100%;
+  z-index:100;
+  background-size: none;
+  max-width: 33rem;
+  height: auto;
+  min-height: 15rem;
+}
 `
 );
 
@@ -34,6 +56,9 @@ const MovieInfoCont = styled.div`
     rgba(52.5, 52.5, 94.5, 1) 150px,
     rgba(52.5, 52.5, 94.5, 0.84) 100%
   );
+  @media screen and (max-width: 48rem) {
+     flex-direction:column;
+  }
 `;
 const NavBarMenu = styled.div`
   font-size: 14px;
@@ -45,7 +70,7 @@ const NavBarMenu = styled.div`
 
 const SubMenu = styled.div`
   margin-top: 3rem;
-  z-index:100;
+  z-index: 100;
   display: none;
   min-width: 12rem;
   position: absolute;
@@ -77,7 +102,8 @@ const SubMenu = styled.div`
 `;
 const NavMenuItem = styled.li`
 margin-right: 1.875rem;
-
+display:flex;
+align-items:center;
   a {
     display: flex;
     align-items: center;
@@ -100,6 +126,21 @@ const MainImage = styled.img`
   width: 300px;
   height: 450px;
   border-radius: 0.8rem;
+
+  @media screen and (max-width: 48rem) {
+    padding: 0;
+    justify-content: center;
+    justify-content: space-around;
+    border-radius: 0.8rem;
+    position: absolute;
+    left: 20px;
+    width: calc(((100vw / 2.222222) - 40px) / 1.5);
+    min-width: calc(((100vw / 2.222222) - 40px) / 1.5);
+    height: calc((100vw / 2.222222) - 40px);
+    min-height: calc((100vw / 2.222222) - 40px);
+    border-radius: var(--imageBorderRadius);
+    z-index: 4;
+  }
 `;
 
 const MovieDetails = styled.div`
@@ -159,12 +200,10 @@ const FirstSection = styled.div`
 const UnderContent = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 `;
 
 const PopularityIconInfo = styled.div`
-  position: absolute;
-  left: -4rem;
   width: 50px;
   height: 50px;
   display: flex;
@@ -172,7 +211,6 @@ const PopularityIconInfo = styled.div`
   align-items: center;
   background: black;
   border-radius: 50%;
-  margin-left: 0.3rem;
 `;
 
 const PrecnetInfo = styled.div(({ precent }) => {
@@ -265,11 +303,14 @@ const SecondSection = styled.div`
   align-items: unset;
   position: relative;
   margin-top: 1.5rem;
+
+
 `;
 
 const ScoreInfo = styled.h2`
   margin: unset;
   color: white;
+  margin-left: 1rem;
   width: 5rem;
   font-size: 17px;
 `;
@@ -277,23 +318,81 @@ const ScoreInfo = styled.h2`
 const SectionIcons = styled.div`
   display: flex;
   align-items: center;
+  @media screen and (max-width: 48rem) {
+    max-width:auto;
+  }
 `;
 
 const SectionIconsItem = styled.div`
   display: flex;
   align-items: center;
   width: 3rem;
-  border-radius:50%;
-  color:white;
+  border-radius: 50%;
+  color: white;
   height: 3rem;
-  font-size:13px;
+  font-size: 13px;
   background: #092440;
   justify-content: center;
-  margin-left:1rem;
+  margin-left: 1rem;
+  cursor: pointer;
+`;
+
+const PlayTrailerBtn = styled.div`
+  display: flex;
+  margin-left: 2rem;
+  color: white;
+  font-size: 20px;
+  align-items: center;
+  > p {
+    margin: unset;
+    font-size: 16px;
+    width: 6rem;
+    margin-left: 1rem;
+  }
+`;
+
+const ThirdSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  > h3 {
+    color: white;
+    margin: unset;
+    margin-top: 1rem;
+  }
+`;
+
+const TagLine = styled.p`
+  color: #fff;
+  margin-bottom: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: italic;
+  opacity: 0.7;
+`;
+
+const MovieOverview = styled.div`
+  width: 66rem;
+  height: auto;
+  color: white;
+  @media screen and (max-width: 48rem) {
+    width:100%
+  }
+`;
+
+const UserScore = styled.div`
+
+display:flex
+position:relative;
 `;
 export {
+  ThirdSection,
+  UserScore,
   InfoCont,
   SectionIcons,
+  MovieOverview,
+  TagLine,
+  PlayTrailerBtn,
   UnderContent,
   SecondSection,
   NavBarMenu,

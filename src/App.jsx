@@ -5,6 +5,11 @@ import MovieInfo from "./components/MovieInfo/MovieInfo";
 import { MoviesContextProvider } from "./contexts/moviesContext";
 import { Routes, Route } from "react-router-dom";
 
+
+/**
+ *  Creates App component configured with main elements of the page
+ *  @returns {component} App component including the components of the page
+ */
 function App() {
   return (
     <MoviesContextProvider>

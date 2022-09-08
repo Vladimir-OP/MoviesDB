@@ -13,8 +13,9 @@ import {
   SubmitBtn,
 } from "./Filter.style";
 import { MoviesContext } from "../../contexts/moviesContext";
-import { Navigate } from "react-router";
 
+
+// types of sorting
 const sortingFilters = [
   {
     id: 1,
@@ -57,10 +58,18 @@ const sortingFilters = [
     name: "Rating Ascending",
   },
 ];
+  
 
+/**
+ *   // Filter Component that make movies sorting 
+ * @returns {component}
+ */
 const Filter = () => {
+  // keep value about sort menu open or close condition and give it to the button
   const [isOpen, setIsOpen] = useState(false);
+  // keep value about menu open or close condition
   const [isSortMenuOpen, setIsSortMenuOpen] = useState(false);
+  // give filter option to other components with context 
   const { filter, setFilter, setApplyFilter } = useContext(MoviesContext);
 
   return (

@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router";
 import { useState, useEffect, useContext } from "react";
+import PropTypes from "prop-types";
 import { MoviesContext } from "../../contexts/moviesContext";
 import {
   MovieCont,
@@ -24,14 +25,23 @@ const customizeDate = (dateString) => {
   return "".concat(month, " ", day, ", ", year);
 };
 
+/**
+ *  create and give styles to all movies individually
+ * @param {object} movie
+ * @returns
+ */
 const Movie = ({ movie }) => {
+  // keep image information as object
   const [image, setImage] = useState();
-  const navigate = useNavigate();
+  // set movie and keep it in context for other components
   const { setMovie } = useContext(MoviesContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
+    // seting image info using movie id
     setImage(getImages(movie.poster_path));
   }, []);
+
   return (
     <MoviesConteiner>
       <MovieCont>
@@ -68,4 +78,14 @@ const Movie = ({ movie }) => {
   );
 };
 
+Movie.propTypes = {
+  movie: PropTypes.shape({
+    poster_path: PropTypes.string,
+    release_date: PropTypes.string,
+    vote_average: PropTypes.number,
+  }),
+};
+Movie.defaultProps = {
+  movie: {},
+};
 export default Movie;

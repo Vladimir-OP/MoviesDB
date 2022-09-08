@@ -1,10 +1,26 @@
 import { useContext, useState, useEffect } from "react";
+import { MoviesContext } from "../../contexts/moviesContext";
+import getImages from "../../services/images";
+import { MinuteConvert, GetDate } from "../../utils/helpingFunc";
+import {
+  getOtherInfoAboutMovie,
+  getBackgroundImage,
+} from "../../services/moviesInfo";
+import { getMoviesDetails } from "../../services/movies";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faListDots,faHeart,faBookmark,faStar } from "@fortawesome/free-solid-svg-icons";
+import {
+  faListDots,
+  faHeart,
+  faBookmark,
+  faStar,
+  faPlay,
+  faCaretDown,
+} from "@fortawesome/free-solid-svg-icons";
 import {
   InfoCont,
   NavBarMenu,
   NavMenuItem,
+  ThirdSection,
   SectionIcons,
   SubMenu,
   BackgroundImage,
@@ -13,42 +29,50 @@ import {
   MovieInfoCont,
   UnderContent,
   MovieInfoItems,
+  MovieOverview,
   MovieDetails,
   NumberInfo,
   SecondSection,
   PrecnetInfo,
   PopularityIconInfo,
   FirstSection,
+  TagLine,
   ScoreInfo,
+  UserScore,
+  PlayTrailerBtn,
 } from "./MovieInfo.style";
-import { MoviesContext } from "../../contexts/moviesContext";
-import { getBackgroundImage } from "../../services/moviesInfo";
-import getImages from "../../services/images";
-import { getMoviesDetails } from "../../services/movies";
-import { getOtherInfoAboutMovie } from "../../services/moviesInfo";
-import { GetDate } from "../../utils/helpingFunc";
-import { MinuteConvert } from "../../utils/helpingFunc";
-
+/**
+ * Creates MovieInfo components and keep main information about movie 
+ * @returns {componetn}
+ */
 const MovieInfo = () => {
+  // take movie information from context
   const { movie } = useContext(MoviesContext);
+  // keep background image information
   const [backgroundImage, setBackgroundImage] = useState();
+  // keep main image information
   const [mainImage, setMainImage] = useState();
+  // keep information about Movie
   const [movieInfo, setMovieInfo] = useState();
+  // keep other information about movie
   const [otherInfo, setOtherInfo] = useState();
 
   useEffect(() => {
     (async () => {
       try {
+        // take information about movie details
         const response = await getMoviesDetails(movie.id);
+        // get other information aboot movie
         const InfoResponse = await getOtherInfoAboutMovie(movie.id);
         setOtherInfo(InfoResponse);
-        console.log(InfoResponse, "other info");
         setMovieInfo(response);
       } catch (error) {
         console.log(error);
       }
     })();
+    //set Backgroun image taken from DB
     setBackgroundImage(getBackgroundImage(movie.backdrop_path));
+    // set Main Image taken from DB
     setMainImage(getImages(movie.poster_path));
   }, []);
 
@@ -57,6 +81,7 @@ const MovieInfo = () => {
       <NavBarMenu>
         <NavMenuItem>
           <a href="#">Overview</a>
+          <FontAwesomeIcon icon={faCaretDown} />
           <SubMenu>
             <a href="#">Main</a>
             <a href="#">Alternative Titles</a>
@@ -69,6 +94,7 @@ const MovieInfo = () => {
         </NavMenuItem>
         <NavMenuItem>
           <a href="#">Media</a>
+          <FontAwesomeIcon icon={faCaretDown} />
           <SubMenu>
             <a href="#">Backdrops</a>
             <a href="#">Logos</a>
@@ -79,6 +105,7 @@ const MovieInfo = () => {
         </NavMenuItem>
         <NavMenuItem>
           <a href="#">Fandom</a>
+          <FontAwesomeIcon icon={faCaretDown} />
           <SubMenu>
             <a href="#">Discussions</a>
             <a href="#">Reviews</a>
@@ -86,6 +113,7 @@ const MovieInfo = () => {
         </NavMenuItem>
         <NavMenuItem>
           <a href="#">Share</a>
+          <FontAwesomeIcon icon={faCaretDown} />
           <SubMenu>
             <a href="#">Share Link</a>
             <a href="#">Facebook</a>
@@ -93,6 +121,7 @@ const MovieInfo = () => {
           </SubMenu>
         </NavMenuItem>
       </NavBarMenu>
+
       <BackgroundImage image={backgroundImage}>
         <MovieInfoCont>
           <MovieInfoItems>
@@ -125,25 +154,27 @@ const MovieInfo = () => {
                   </div>
                 </FirstSection>
                 <SecondSection>
-                  <PopularityIconInfo>
-                    <PrecnetInfo precent={movie.vote_average * 10}>
-                      <svg>
-                        <circle cx="25" cy="25" r="25" />
-                        <circle cx="25" cy="25" r="25" />
-                      </svg>
-                      <NumberInfo>
-                        {movie.vote_average === 0 ||
-                        movie.vote_average === undefined ? (
-                          <h2>NA</h2>
-                        ) : (
-                          <h2>
-                            {movie.vote_average * 10}
-                            <span>%</span>
-                          </h2>
-                        )}
-                      </NumberInfo>
-                    </PrecnetInfo>
-                  </PopularityIconInfo>
+                  <UserScore>
+                    <PopularityIconInfo>
+                      <PrecnetInfo precent={movie.vote_average * 10}>
+                        <svg>
+                          <circle cx="25" cy="25" r="25" />
+                          <circle cx="25" cy="25" r="25" />
+                        </svg>
+                        <NumberInfo>
+                          {movie.vote_average === 0 ||
+                          movie.vote_average === undefined ? (
+                            <h2>NA</h2>
+                          ) : (
+                            <h2>
+                              {movie.vote_average * 10}
+                              <span>%</span>
+                            </h2>
+                          )}
+                        </NumberInfo>
+                      </PrecnetInfo>
+                    </PopularityIconInfo>
+                  </UserScore>
                   <ScoreInfo>user Score</ScoreInfo>
 
                   <SectionIcons>
@@ -159,8 +190,19 @@ const MovieInfo = () => {
                     <SectionIconsItem>
                       <FontAwesomeIcon icon={faStar} />
                     </SectionIconsItem>
+                    <PlayTrailerBtn>
+                      <FontAwesomeIcon icon={faPlay} />
+                      <p>Play Trailer</p>
+                    </PlayTrailerBtn>
                   </SectionIcons>
                 </SecondSection>
+                <ThirdSection>
+                  <TagLine>{otherInfo && otherInfo.tagline}</TagLine>
+                  <h3>Overview</h3>
+                  <MovieOverview>
+                    <p>{otherInfo && otherInfo.overview}</p>
+                  </MovieOverview>
+                </ThirdSection>
               </UnderContent>
             </MovieDetails>
           </MovieInfoItems>

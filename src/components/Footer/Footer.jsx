@@ -1,6 +1,10 @@
-import React from "react";
 import { FooterCont, FooterLeft,FooterMenu } from "./footer.style";
 import logo from "/home/vladimir/Desktop/Movies/movies/src/assets/logo.svg";
+
+/**
+ * returns Footer component and keep information in it about page
+ * @returns {component}
+ */
 const Footer = () => {
   return (
     <FooterCont>
