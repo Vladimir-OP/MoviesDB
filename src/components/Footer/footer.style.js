@@ -3,17 +3,16 @@ import styled from "styled-components";
 const FooterCont = styled.footer`
   height: auto;
   width: 100%;
-  background-color: rgba(9, 36, 64, 255);
+  background-color: #0e233f;
   display: flex;
   bottom: 0;
   left: 0;
   right: 0;
   justify-content: center;
-  margin-top:2rem;
+  margin-top: 2rem;
 
   @media screen and (max-width: 56.25rem) {
     flex-direction: column;
-    
   }
 `;
 
@@ -41,14 +40,14 @@ const FooterLeft = styled.div`
     width: 15.1rem;
     height: 2.6rem;
     background-color: white;
-    color: rgba(60, 179, 226, 255);
+    color: #52b2e1;
     font-size: 1.4rem;
     font-weight: bold;
   }
 
   @media screen and (max-width: 56.25rem) {
     top: 0;
-    margin-left:4rem;
+    margin-left: 4rem;
   }
 `;
 
@@ -78,10 +77,8 @@ const FooterMenu = styled.div`
   }
 
   @media screen and (max-width: 56.25rem) {
-   
-    margin-left:4rem;
+    margin-left: 4rem;
   }
 `;
 
-const MenuItem = styled.div``;
 export { FooterCont, FooterLeft, FooterMenu };

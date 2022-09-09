@@ -16,12 +16,11 @@ const getMovies = async (page = 1, sortBy = null) => {
 };
 
 // get detail information about movies
-export const getMoviesDetails =  async (movieId) => { 
-  const response = await  fetch( 
+export const getMoviesDetails = async (movieId) => {
+  const response = await fetch(
     `https://api.themoviedb.org/3/movie/${movieId}?api_key=${apikey}&language=en-US`
   );
 
- 
   return await response.json();
-}; 
+};
 export default getMovies;

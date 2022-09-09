@@ -41,7 +41,6 @@ const LoadPage = styled.div`
   background-color: #3ab3e2;
   margin-top: 3rem;
   border-radius: 0.5rem;
-  
 `;
 
 const LoadMoreBtn = styled.h1`

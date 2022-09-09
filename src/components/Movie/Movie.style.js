@@ -39,8 +39,8 @@ const MovieTitle = styled.p`
   margin-top: 1.5rem;
   min-height: 2rem;
 
-  :hover{
-    color:#3ab3e2
+  :hover {
+    color: #3ab3e2;
   }
 `;
 

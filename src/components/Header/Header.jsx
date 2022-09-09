@@ -9,10 +9,7 @@ import {
   Translate,
   List,
 } from "./header.style";
-import {
-  Container,
-  Icon,
-} from "../shared/shared.style";
+import { Container, Icon } from "../shared/shared.style";
 import logoText from "../../assets/logo-text.svg";
 import plus from "../../assets//plus.svg";
 import search from "../../assets/search.svg";

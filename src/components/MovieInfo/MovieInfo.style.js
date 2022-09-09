@@ -10,7 +10,7 @@ const InfoCont = styled.div`
     padding: 0;
     justify-content: center;
     justify-content: space-around;
-    height:100%
+    height: 100%;
   }
 `;
 const MovieInfoItems = styled.div`
@@ -21,8 +21,8 @@ const MovieInfoItems = styled.div`
     padding: 0;
     justify-content: center;
     justify-content: space-around;
-    flex-direction:column;
-    margin:0;
+    flex-direction: column;
+    margin: 0;
   }
 `;
 const BackgroundImage = styled.div(
@@ -57,7 +57,7 @@ const MovieInfoCont = styled.div`
     rgba(52.5, 52.5, 94.5, 0.84) 100%
   );
   @media screen and (max-width: 48rem) {
-     flex-direction:column;
+    flex-direction: column;
   }
 `;
 const NavBarMenu = styled.div`
@@ -163,8 +163,8 @@ const FirstSection = styled.div`
   margin-right: 4rem;
   display: flex;
   > span {
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    color: rgba(255, 255, 255, 0.6);
+    border: 1px solid white;
+    color: grey;
     display: inline-flex;
     white-space: nowrap;
     align-items: center;
@@ -303,8 +303,6 @@ const SecondSection = styled.div`
   align-items: unset;
   position: relative;
   margin-top: 1.5rem;
-
-
 `;
 
 const ScoreInfo = styled.h2`
@@ -319,7 +317,7 @@ const SectionIcons = styled.div`
   display: flex;
   align-items: center;
   @media screen and (max-width: 48rem) {
-    max-width:auto;
+    max-width: auto;
   }
 `;
 
@@ -376,7 +374,7 @@ const MovieOverview = styled.div`
   height: auto;
   color: white;
   @media screen and (max-width: 48rem) {
-    width:100%
+    width: 100%;
   }
 `;
 

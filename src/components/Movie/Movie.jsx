@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router";
 import { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
+import { customizeDate } from "../../utils/helpingFunc";
 import { MoviesContext } from "../../contexts/moviesContext";
 import {
   MovieCont,
@@ -16,14 +17,7 @@ import {
 import getImages from "../../services/images";
 
 // customize date in right format
-const customizeDate = (dateString) => {
-  if (!dateString) return "";
-  let date = new Date(dateString).toDateString();
-  date = date.split(" ");
-  date.pop();
-  const [month, day, year] = date;
-  return "".concat(month, " ", day, ", ", year);
-};
+
 
 /**
  *  create and give styles to all movies individually

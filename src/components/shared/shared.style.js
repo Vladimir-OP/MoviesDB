@@ -65,7 +65,6 @@ const Icon = styled.div(
 `
 );
 const GlobalStyle = styled.div`
-
   margin: 0 auto;
 `;
 export { Container, Icon, GlobalStyle, Main, Content, ContainerVertical };

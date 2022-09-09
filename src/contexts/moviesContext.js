@@ -9,7 +9,7 @@ export const MoviesContext = createContext();
  * @returns {contextProvider} Context provider containing the children with shared data
  */
 export function MoviesContextProvider({ children }) {
-// default filter for movies
+  // default filter for movies
   const DefaultFilter = {
     id: 1,
     value: "popularity.desc",

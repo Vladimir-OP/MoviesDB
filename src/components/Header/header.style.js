@@ -8,7 +8,7 @@ const HeaderContainer = styled.header`
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgba(9, 36, 64, 255);
+  background-color: #0e233f;
   height: 4rem;
   width: 100%;
   z-index: 10;
@@ -27,7 +27,7 @@ const Sidebar = styled.div(
   height: 100%;
   padding: 2rem 0 0 5rem;
   line-height: 2;
-  background: rgba(9, 36, 64, 255);
+  background:#263952;
   opacity: .9;
   z-index: 100;
   transform: ${show ? "translateX(0)" : "translateX(-100%)"};
@@ -162,7 +162,7 @@ const Translate = styled.span`
 
   &:hover {
     cursor: pointer;
-    color: var(--tmdbDarkBlue);
+    color: blue;
     background-color: #fff;
   }
 `;

@@ -14,7 +14,6 @@ import {
 } from "./Filter.style";
 import { MoviesContext } from "../../contexts/moviesContext";
 
-
 // types of sorting
 const sortingFilters = [
   {
@@ -58,10 +57,9 @@ const sortingFilters = [
     name: "Rating Ascending",
   },
 ];
-  
 
 /**
- *   // Filter Component that make movies sorting 
+ *   // Filter Component that make movies sorting
  * @returns {component}
  */
 const Filter = () => {
@@ -69,7 +67,7 @@ const Filter = () => {
   const [isOpen, setIsOpen] = useState(false);
   // keep value about menu open or close condition
   const [isSortMenuOpen, setIsSortMenuOpen] = useState(false);
-  // give filter option to other components with context 
+  // give filter option to other components with context
   const { filter, setFilter, setApplyFilter } = useContext(MoviesContext);
 
   return (
@@ -93,10 +91,9 @@ const Filter = () => {
               <Selections>
                 {sortingFilters.map((e) => (
                   <SelectionBtn
-                  key={e.name}
+                    key={e.name}
                     onClick={() => {
                       setFilter(e);
-                      
                     }}
                   >
                     {e.name}
@@ -109,7 +106,7 @@ const Filter = () => {
       </FilterItem>
       <SubmitBtn
         onClick={() => {
-          setApplyFilter((prev) => prev +=1);
+          setApplyFilter((prev) => (prev += 1));
         }}
       >
         Search
