@@ -42,7 +42,7 @@ import {
   PlayTrailerBtn,
 } from "./MovieInfo.style";
 /**
- * Creates MovieInfo components and keep main information about movie 
+ * Creates MovieInfo components and keep main information about movie
  * @returns {componetn}
  */
 const MovieInfo = () => {
@@ -140,17 +140,16 @@ const MovieInfo = () => {
                   </h3>
                   <div>
                     <span>&#9679;</span>
-                    {movieInfo &&
-                      movieInfo.genres.map((gener) =>
-                        gener !==
-                        movieInfo.genres[movieInfo.genres.length - 1] ? (
-                          <a key={gener.name}>{gener.name},</a>
-                        ) : (
-                          <a key={gener.name}> {gener.name}</a>
-                        )
-                      )}
+                    {movieInfo?.genres.map((gener) =>
+                      gener !==
+                      movieInfo.genres[movieInfo.genres.length - 1] ? (
+                        <a key={gener.name}>{gener.name},</a>
+                      ) : (
+                        <a key={gener.name}> {gener.name}</a>
+                      )
+                    )}
                     <span>&#9679;</span>
-                    <span>{otherInfo && MinuteConvert(otherInfo.runtime)}</span>
+                    <span>{MinuteConvert(otherInfo?.runtime)}</span>
                   </div>
                 </FirstSection>
                 <SecondSection>
@@ -197,10 +196,10 @@ const MovieInfo = () => {
                   </SectionIcons>
                 </SecondSection>
                 <ThirdSection>
-                  <TagLine>{otherInfo && otherInfo.tagline}</TagLine>
+                  <TagLine>{otherInfo?.tagline}</TagLine>
                   <h3>Overview</h3>
                   <MovieOverview>
-                    <p>{otherInfo && otherInfo.overview}</p>
+                    <p>{otherInfo?.overview}</p>
                   </MovieOverview>
                 </ThirdSection>
               </UnderContent>
