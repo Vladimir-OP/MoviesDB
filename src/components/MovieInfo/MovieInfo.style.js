@@ -190,7 +190,7 @@ const FirstSection = styled.div`
       color: white;
       margin-left: 0.3rem;
     }
-    > a {
+    > aa {
       margin-left: 0.5rem;
       color: white;
     }

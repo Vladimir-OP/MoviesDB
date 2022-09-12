@@ -74,50 +74,50 @@ const MovieInfo = () => {
     setBackgroundImage(getBackgroundImage(movie.backdrop_path));
     // set Main Image taken from DB
     setMainImage(getImages(movie.poster_path));
-  }, []);
+  }, [movie.id, movie.backdrop_path, movie.poster_path]);
 
   return (
     <InfoCont>
       <NavBarMenu>
         <NavMenuItem>
-          <a href="#">Overview</a>
+          <a href="#/">Overview</a>
           <FontAwesomeIcon icon={faCaretDown} />
           <SubMenu>
-            <a href="#">Main</a>
-            <a href="#">Alternative Titles</a>
-            <a href="#">Cast & Crew</a>
-            <a href="#">Relase Date</a>
-            <a href="#">Translations</a>
-            <a href="#"></a>
-            <a href="#">Changes</a>
+            <a href="#//">Main</a>
+            <a href="#/">Alternative Titles</a>
+            <a href="#/">Cast & Crew</a>
+            <a href="#/">Relase Date</a>
+            <a href="#/">Translations</a>
+            <a href="#/">&#8205;</a>
+            <a href="#/">Changes</a>
           </SubMenu>
         </NavMenuItem>
         <NavMenuItem>
-          <a href="#">Media</a>
+          <a href="#/">Media</a>
           <FontAwesomeIcon icon={faCaretDown} />
           <SubMenu>
-            <a href="#">Backdrops</a>
-            <a href="#">Logos</a>
-            <a href="#">Posters</a>
-            <a href="#">Relase Date</a>
-            <a href="#">Videos</a>
+            <a href="#/">Backdrops</a>
+            <a href="#/">Logos</a>
+            <a href="#/">Posters</a>
+            <a href="#/">Relase Date</a>
+            <a href="#/">Videos</a>
           </SubMenu>
         </NavMenuItem>
         <NavMenuItem>
-          <a href="#">Fandom</a>
+          <a href="#/">Fandom</a>
           <FontAwesomeIcon icon={faCaretDown} />
           <SubMenu>
-            <a href="#">Discussions</a>
-            <a href="#">Reviews</a>
+            <a href="#/">Discussions</a>
+            <a href="#/">Reviews</a>
           </SubMenu>
         </NavMenuItem>
         <NavMenuItem>
-          <a href="#">Share</a>
+          <a href="#/">Share</a>
           <FontAwesomeIcon icon={faCaretDown} />
           <SubMenu>
-            <a href="#">Share Link</a>
-            <a href="#">Facebook</a>
-            <a href="#">Tweet</a>
+            <a href="#/">Share Link</a>
+            <a href="#/">Facebook</a>
+            <a href="#/">Tweet</a>
           </SubMenu>
         </NavMenuItem>
       </NavBarMenu>
@@ -143,9 +143,14 @@ const MovieInfo = () => {
                     {movieInfo?.genres.map((gener) =>
                       gener !==
                       movieInfo.genres[movieInfo.genres.length - 1] ? (
-                        <a key={gener.name}>{gener.name},</a>
+                        <a href="#/" key={gener.name}>
+                          {gener.name},
+                        </a>
                       ) : (
-                        <a key={gener.name}> {gener.name}</a>
+                        <a href="#/" key={gener.name}>
+                          {" "}
+                          {gener.name}
+                        </a>
                       )
                     )}
                     <span>&#9679;</span>
