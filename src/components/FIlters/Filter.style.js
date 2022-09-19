@@ -70,11 +70,14 @@ const FilterTitle = styled.div(
     padding-left:1rem;
     padding-right:1rem;
     font-weight: bold;
-  
+    height:3rem;
+    
     :hover {
       cursor: pointer;
     }
-  
+   >p{
+    margin:unset;
+   }
     img {
       width: 1rem;
       height: 1rem;

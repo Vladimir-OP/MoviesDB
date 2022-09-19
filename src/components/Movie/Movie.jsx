@@ -4,20 +4,23 @@ import { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { customizeDate } from "../../utils/helpingFunc";
 import { MoviesContext } from "../../contexts/moviesContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClose } from "@fortawesome/free-solid-svg-icons";
 import {
   MovieCont,
   ImageCont,
   MoviesConteiner,
   MovieTitle,
   MovieDate,
+  DeleteBtn,
   PopularityIcon,
   Precnet,
   Number,
 } from "./Movie.style";
 import getImages from "../../services/images";
+import axios from "axios";
 
 // customize date in right format
-
 
 /**
  *  create and give styles to all movies individually
@@ -28,7 +31,7 @@ const Movie = ({ movie }) => {
   // keep image information as object
   const [image, setImage] = useState();
   // set movie and keep it in context for other components
-  const { setMovie } = useContext(MoviesContext);
+  const { setMovie, setDeleteMovie,setMovies ,deleteMovie} = useContext(MoviesContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -36,14 +39,48 @@ const Movie = ({ movie }) => {
     setImage(getImages(movie.poster_path));
   }, []);
 
+
+  useEffect(() => {
+    // seting movies and geting it from DB
+    (async () => {
+      await axios
+        .post(
+          `http://localhost:3001/movies`,
+          {},
+          {
+            headers: {
+              authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        )
+        .then((res) => {
+          const results = res.data;
+          setMovies(results);
+        });
+    })();
+  }, [deleteMovie]);
   return (
     <MoviesConteiner>
+      <DeleteBtn
+        onClick={() => {
+          (async () => {
+            console.log(movie.id);
+            axios.delete("http://localhost:3001/deleteMovie", {
+              data: { id: movie.id },
+            });
+          })();
+          setMovie(movie);
+          setDeleteMovie((prev) => ++prev);
+        }}
+      >
+        <FontAwesomeIcon icon={faClose} />
+      </DeleteBtn>
+
       <MovieCont>
         <ImageCont src={image} />
         <MovieTitle
           onClick={() => {
             navigate("/movie");
-            setMovie(movie);
           }}
         >
           {movie.title}

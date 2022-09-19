@@ -2,7 +2,6 @@ import React from "react";
 import { useContext } from "react";
 import { MoviesContext } from "../../contexts/moviesContext";
 import { useState, useEffect } from "react";
-import getMovies from "../../services/movies";
 import Movie from "../Movie/Movie";
 import {
   MoviesCont,
@@ -10,6 +9,7 @@ import {
   MainCont,
   LoadMoreBtn,
 } from "./MoviesList.style";
+import axios from "axios";
 
 /**
  * take all movies from Db and give single style for them
@@ -17,34 +17,51 @@ import {
  */
 const MoviesList = () => {
   // keep all movies
-  const [movies, setMovies] = useState([]);
   // keep info about page for pagination
   const [page, setPage] = useState(1);
   // take filter info from context
-  const { filter, applyFilter } = useContext(MoviesContext);
+  const { filter, applyFilter, movies, setMovies, deleteMovie } =
+    useContext(MoviesContext);
 
   useEffect(() => {
     // seting movies and geting it from DB
     (async () => {
-      const { results } = await getMovies();
-      setMovies(results);
+      await axios
+        .post(
+          `http://localhost:3001/movies`,
+          {},
+          {
+            headers: {
+              authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        )
+        .then((res) => {
+          const results = res.data;
+          setMovies(results);
+        });
     })();
   }, []);
-
-  useEffect(() => {
-    // get new movies from other page and split it to movies
-    (async () => {
-      const newMovies = await getMovies(page, filter.value);
-      movies.unshift(...newMovies.results);
-    })();
-  }, [page]);
-
+  
   useEffect(() => {
     // applay filter and sort movies by it
-    (async () => {
-      const { results } = await getMovies(page, filter.value);
-      setMovies(results);
-    })();
+    if (applyFilter != 1) {
+      axios
+        .post(
+          `http://localhost:3001/filter`,
+          { filter },
+          {
+            headers: {
+              authorization: `Bearer ${localStorage.getItem("token")}`,
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res.data);
+          const results = res.data;
+          setMovies(results);
+        });
+    }
   }, [applyFilter]);
 
   return (

@@ -33,36 +33,36 @@ function Header() {
           <Menu>
             <img src={logoText} alt="logo" height={20} />
             <MenuItem>
-              <a href="/#">Movies</a>
+              <a href="/main">Movies</a>
               <SubMenu>
-                <a href="/#">Popular</a>
-                <a href="/#">Now Playing</a>
-                <a href="/#">Upcoming</a>
-                <a href="/#">Top Rated</a>
+                <a>Popular</a>
+                <a>Now Playing</a>
+                <a>Upcoming</a>
+                <a>Top Rated</a>
               </SubMenu>
             </MenuItem>
             <MenuItem>
-              <a href="/#">TV Shows</a>
+              <a>TV Shows</a>
               <SubMenu>
-                <a href="/#">Popular</a>
-                <a href="/#">Airing Today</a>
-                <a href="/#">On TV</a>
-                <a href="/#">Top Rated</a>
+                <a>Popular</a>
+                <a>Airing Today</a>
+                <a>On TV</a>
+                <a>Top Rated</a>
               </SubMenu>
             </MenuItem>
             <MenuItem>
-              <a href="/#">People</a>
+              <a>People</a>
               <SubMenu>
-                <a href="/#">Popular People</a>
+                <a>Popular People</a>
               </SubMenu>
             </MenuItem>
             <MenuItem>
-              <a href="/#">More</a>
+              <a>More</a>
               <SubMenu>
-                <a href="/#">Discussions</a>
-                <a href="/#">Leadboard</a>
-                <a href="/#">Support</a>
-                <a href="/#">API</a>
+                <a>Discussions</a>
+                <a>Leadboard</a>
+                <a>Support</a>
+                <a>API</a>
               </SubMenu>
             </MenuItem>
           </Menu>
@@ -71,8 +71,16 @@ function Header() {
           <List>
             <img src={plus} alt="" height={22} />
             <Translate>en</Translate>
-            <a href="/#">Login</a>
-            <a href="/#">Join TMDB</a>
+            <a
+              onClick={() => {
+                localStorage.removeItem("token");
+              }}
+              href="/"
+            >
+              Logout
+            </a>
+
+            <a href="/newMovie">Add New Movie</a>
             <img src={search} alt="" height={30} />
           </List>
         </Col>

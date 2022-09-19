@@ -1,5 +1,10 @@
 import moment from "moment";
 
+export const GetFormatedDate = (date) => {
+  const m = moment(date, "YYYY-MM-DD");
+  if (!date) return "";
+  return m.format("L");
+};
 // get relase date of movie and format it into usual form
 export const GetDate = (date, getFullyYear) => {
   const m = moment(date, "YYYY-MM-DD");

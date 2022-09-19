@@ -19,11 +19,23 @@ export function MoviesContextProvider({ children }) {
   const [filter, setFilter] = useState(DefaultFilter);
   const [movie, setMovie] = useState();
   const [applyFilter, setApplyFilter] = useState(1);
+  const [registrationSection, setRegistrationSection] = useState(false);
+  const [user, setUser] = useState([]);
+  const [deleteMovie, setDeleteMovie] = useState(1);
+  const [movies, setMovies] = useState([]);
 
   return (
     <MoviesContext.Provider
       value={{
+        user,
+        deleteMovie,
+        movies,
+        setDeleteMovie,
+        setMovies,
+        registrationSection,
+        setRegistrationSection,
         filter,
+        setUser,
         setFilter,
         applyFilter,
         setApplyFilter,

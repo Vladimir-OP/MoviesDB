@@ -18,42 +18,49 @@ import { MoviesContext } from "../../contexts/moviesContext";
 const sortingFilters = [
   {
     id: 1,
-    value: "popularity.desc",
+    value: "DESC",
+    type: "popularity",
     name: "Popularity Descending",
   },
   {
     id: 2,
-    value: "popularity.asc",
+    value: "ASC",
+    type: "popularity",
     name: "Popularity Ascending",
   },
   {
     id: 3,
-    value: "release_date.desc",
+    value: "DESC",
     name: "Release Date Descending",
   },
   {
     id: 4,
-    value: "release_date.asc",
+    value: "ASC",
+    type: "release_date",
     name: "Release Date Ascending",
   },
   {
     id: 5,
-    value: "original_title.desc",
+    value: "DESC",
+    type: "title",
     name: "Title (Z-A)",
   },
   {
     id: 6,
-    value: "original_title.asc",
+    value: "ASC",
+    type: "title",
     name: "Title (A-Z)",
   },
   {
     id: 7,
-    value: "vote_average.desc",
+    value: "DESC",
+    type: "vote_average",
     name: "Rating Descending",
   },
   {
     id: 8,
-    value: "vote_average.asc",
+    value: "ASC",
+    type: "vote_average",
     name: "Rating Ascending",
   },
 ];
@@ -68,8 +75,10 @@ const Filter = () => {
   // keep value about menu open or close condition
   const [isSortMenuOpen, setIsSortMenuOpen] = useState(false);
   // give filter option to other components with context
-  const { filter, setFilter, setApplyFilter } = useContext(MoviesContext);
+  const { filter, setFilter, setApplyFilter, setMovies, applyFilter } =
+    useContext(MoviesContext);
 
+  
   return (
     <FilterCont>
       <Titile>Popular TV Shows</Titile>

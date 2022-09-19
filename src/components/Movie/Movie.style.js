@@ -14,6 +14,14 @@ const MoviesConteiner = styled.div`
     justify-content: space-between;
   }
 `;
+
+const DeleteBtn = styled.div`
+  position: absolute;
+  padding-left: 0.8rem;
+  color: red;
+  font-size: 20px;
+  cursor: pointer;
+`;
 const MovieCont = styled.div`
   display: flex;
   flex-direction: column;
@@ -154,5 +162,6 @@ export {
   MovieTitle,
   PopularityIcon,
   Precnet,
+  DeleteBtn,
   Number,
 };
