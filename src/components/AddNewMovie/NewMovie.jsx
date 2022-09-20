@@ -3,7 +3,7 @@ import { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { GetFormatedDate } from "../../utils/helpingFunc";
+import { GetFormatedDate, getRandomPosterImage } from "../../utils/helpingFunc";
 
 import {
   NewMovieForm,
@@ -14,9 +14,8 @@ import {
   NewMovieInput,
 } from "./NewMovie.style";
 
-
 /**
- *  returns new Movie posting form 
+ *  returns new Movie posting form
  * @returns {component}
  */
 const NewMovie = () => {
@@ -31,7 +30,7 @@ const NewMovie = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-// take date about movie and keep it, poster_path and backdrop_path have default values
+    // take date about movie and keep it, poster_path and backdrop_path have default values
     const movieData = {
       release_date: GetFormatedDate(startdate),
       original_language,
@@ -39,11 +38,11 @@ const NewMovie = () => {
       overview,
       title: original_title,
       popularity: 0,
-      poster_path: "/62HCnUTziyWcpDaBO2i1DX17ljH.jpg",
+      poster_path: getRandomPosterImage(),
       backdrop_path: "/odJ4hx6g6vBt4lBWKFD1tI8WS4x.jpg",
-      vote_average: 0,
+      vote_average: Math.floor(Math.random() * 10),
     };
-// post new movies
+    // post new movies
     axios
       .post("http://localhost:3001/newMovie", movieData, {
         headers: {
@@ -53,7 +52,7 @@ const NewMovie = () => {
       .catch((error) => {
         console.log(error);
       });
-      // clear inputs of form
+    // clear inputs of form
     Array.from(document.querySelectorAll("input")).forEach(
       (input) => (input.value = "")
     );
@@ -98,6 +97,5 @@ const NewMovie = () => {
     </NewMovieForm>
   );
 };
-
 
 export default NewMovie;

@@ -9,6 +9,7 @@ import {
   MainCont,
   LoadMoreBtn,
 } from "./MoviesList.style";
+import getMovies from "../../services/movies";
 import axios from "axios";
 
 /**
@@ -22,6 +23,7 @@ const MoviesList = () => {
   // take filter info from context
   const { filter, applyFilter, movies, setMovies, deleteMovie } =
     useContext(MoviesContext);
+
 
   useEffect(() => {
     // seting movies and geting it from DB
@@ -42,7 +44,7 @@ const MoviesList = () => {
         });
     })();
   }, []);
-  
+
   useEffect(() => {
     // applay filter and sort movies by it
     if (applyFilter != 1) {

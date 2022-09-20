@@ -31,14 +31,14 @@ const Movie = ({ movie }) => {
   // keep image information as object
   const [image, setImage] = useState();
   // set movie and keep it in context for other components
-  const { setMovie, setDeleteMovie,setMovies ,deleteMovie} = useContext(MoviesContext);
+  const { setMovie, setDeleteMovie, setMovies, deleteMovie } =
+    useContext(MoviesContext);
   const navigate = useNavigate();
 
   useEffect(() => {
     // seting image info using movie id
     setImage(getImages(movie.poster_path));
   }, []);
-
 
   useEffect(() => {
     // seting movies and geting it from DB
@@ -103,7 +103,7 @@ const Movie = ({ movie }) => {
             </Number>
           </Precnet>
         </PopularityIcon>
-        <MovieDate>{customizeDate(movie.release_date)}</MovieDate>
+        <MovieDate>{movie.release_date}</MovieDate>
       </MovieCont>
     </MoviesConteiner>
   );
