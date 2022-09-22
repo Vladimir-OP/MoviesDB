@@ -88,8 +88,6 @@ const NewMovie = () => {
       <MovieAddBtn
         type="submit"
         onClick={() => {
-          // navigate("/main");
-          console.log("click");
         }}
       >
         Add Movie

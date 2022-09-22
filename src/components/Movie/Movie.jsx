@@ -44,15 +44,11 @@ const Movie = ({ movie }) => {
     // seting movies and geting it from DB
     (async () => {
       await axios
-        .post(
-          `http://localhost:3001/movies`,
-          {},
-          {
-            headers: {
-              authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        )
+        .get(`http://localhost:3001/movies`, {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        })
         .then((res) => {
           const results = res.data;
           setMovies(results);
@@ -64,7 +60,6 @@ const Movie = ({ movie }) => {
       <DeleteBtn
         onClick={() => {
           (async () => {
-            console.log(movie.id);
             axios.delete("http://localhost:3001/deleteMovie", {
               data: { id: movie.id },
             });

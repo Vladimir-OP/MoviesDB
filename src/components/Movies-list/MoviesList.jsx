@@ -24,20 +24,15 @@ const MoviesList = () => {
   const { filter, applyFilter, movies, setMovies, deleteMovie } =
     useContext(MoviesContext);
 
-
   useEffect(() => {
     // seting movies and geting it from DB
     (async () => {
       await axios
-        .post(
-          `http://localhost:3001/movies`,
-          {},
-          {
-            headers: {
-              authorization: `Bearer ${localStorage.getItem("token")}`,
-            },
-          }
-        )
+        .get(`http://localhost:3001/movies`, {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        })
         .then((res) => {
           const results = res.data;
           setMovies(results);
@@ -59,7 +54,6 @@ const MoviesList = () => {
           }
         )
         .then((res) => {
-          console.log(res.data);
           const results = res.data;
           setMovies(results);
         });
